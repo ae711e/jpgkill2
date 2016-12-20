@@ -12,16 +12,10 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
         if(args.length < 1) {
-            System.out.println("(C) 2016 Алексей Еремин");
-            System.out.println("JPGKILL v.2.06(130px, 8x8<5, 32x32<3) 30.09.2016");
-            System.out.println("Перемещает картинки в DirJpg в подкаталог x\\, которые:");
-            System.out.println("a) маленькие;");
-            System.out.println("b) грубо похожи на образцы в DirSampl;");
-            System.out.println("c) точно похожи на образцы в DirSampleHD.");
-            System.out.println(">java -jar jpgkill.jar DirJpg [DirSample [DirSampleHD]]");
-            System.out.println("DirJpg      - каталог с анализируемыми картинками jpg");
-            System.out.println("DirSample   - каталог с картинками-образцами jpg (грубые)");
-            System.out.println("DirSampleHD - каталог с картинками-образцами jpg (точные)");
+            String str;
+            Resource res=new Resource();
+            str = res.getResourceString("/res/readme.txt");
+            System.out.println(str);
             return;
         }
         //
