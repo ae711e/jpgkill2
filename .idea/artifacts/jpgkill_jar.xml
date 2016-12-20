@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="jpgkill:jar">
-    <output-path>c:/tmp/</output-path>
-    <root id="archive" name="jpgkill.jar">
-      <element id="module-output" name="jpgkill" />
-    </root>
-  </artifact>
-</component>
