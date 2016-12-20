@@ -12,23 +12,23 @@ import java.io.InputStreamReader;
 
 /*
  * Created by ae on 20.12.2016.
- * Загрузка строк и картинок из ресурсов приложения JAR
+ * Р—Р°РіСЂСѓР·РєР° СЃС‚СЂРѕРє Рё РєР°СЂС‚РёРЅРѕРє РёР· СЂРµСЃСѓСЂСЃРѕРІ РїСЂРёР»РѕР¶РµРЅРёСЏ JAR
  */
 public class Resource {
   
-  // загрузить текстовый ресурс с кодовой страницей "Cp1251"
+  // Р·Р°РіСЂСѓР·РёС‚СЊ С‚РµРєСЃС‚РѕРІС‹Р№ СЂРµСЃСѓСЂСЃ СЃ РєРѕРґРѕРІРѕР№ СЃС‚СЂР°РЅРёС†РµР№ "Cp1251"
   public String getResourceString(String nameResource)
   {
     return getResourceString(nameResource, "Cp1251");
   }
   
-  // загрузить текстовый ресурс с кодовой страницей codePage ("Cp1251", ...)
+  // Р·Р°РіСЂСѓР·РёС‚СЊ С‚РµРєСЃС‚РѕРІС‹Р№ СЂРµСЃСѓСЂСЃ СЃ РєРѕРґРѕРІРѕР№ СЃС‚СЂР°РЅРёС†РµР№ codePage ("Cp1251", ...)
   public String getResourceString(String nameResource, String codePage)
   {
     StringBuilder sb = new StringBuilder();
     try {
-      InputStream is = getClass().getResourceAsStream(nameResource);  // Имя ресурса
-      BufferedReader br = new BufferedReader(new InputStreamReader(is, "Cp1251")); //* кодовая страница ресурса
+      InputStream is = getClass().getResourceAsStream(nameResource);  // РРјСЏ СЂРµСЃСѓСЂСЃР°
+      BufferedReader br = new BufferedReader(new InputStreamReader(is, "Cp1251")); //* РєРѕРґРѕРІР°СЏ СЃС‚СЂР°РЅРёС†Р° СЂРµСЃСѓСЂСЃР°
       while (true) {
         String line = br.readLine();
         if (line == null)
@@ -42,11 +42,11 @@ public class Resource {
   }
   
   /*
-  исходный код - http://skipy-ru.livejournal.com/5343.html
+  РёСЃС…РѕРґРЅС‹Р№ РєРѕРґ - http://skipy-ru.livejournal.com/5343.html
   private String loadText() {
     StringBuilder sb = new StringBuilder();
     try {
-      InputStream is = getClass().getResourceAsStream("/res/text.txt");  // Имя ресурса
+      InputStream is = getClass().getResourceAsStream("/res/text.txt");  // РРјСЏ СЂРµСЃСѓСЂСЃР°
       BufferedReader br = new BufferedReader(new InputStreamReader(is, "Cp1251"));
       while (true) {
         String line = br.readLine();
