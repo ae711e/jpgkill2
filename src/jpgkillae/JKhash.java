@@ -18,28 +18,28 @@ import java.util.Map;
 /**
  * Created by ae on 07.09.2016.
  */
-// сравнение на основе hash
+// СЃСЂР°РІРЅРµРЅРёРµ РЅР° РѕСЃРЅРѕРІРµ hash
 public class JKhash extends JKminrazmer {
-    // образцы хэш подходящих изображений
+    // РѕР±СЂР°Р·С†С‹ С…СЌС€ РїРѕРґС…РѕРґСЏС‰РёС… РёР·РѕР±СЂР°Р¶РµРЅРёР№
     private Map<String,String> f_samples;
-    private int f_hashImageSize;  // размер хэша изображения
-    private int f_minHamDist;     // минимально-допустимая дистанция Хамминга для сравнения
+    private int f_hashImageSize;  // СЂР°Р·РјРµСЂ С…СЌС€Р° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
+    private int f_minHamDist;     // РјРёРЅРёРјР°Р»СЊРЅРѕ-РґРѕРїСѓСЃС‚РёРјР°СЏ РґРёСЃС‚Р°РЅС†РёСЏ РҐР°РјРјРёРЅРіР° РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ
 
     JKhash()
     {
-        f_hashImageSize = 0;  // (будет 8)
+        f_hashImageSize = 0;  // (Р±СѓРґРµС‚ 8)
         f_minHamDist = 5;
     }
 
     JKhash(int hashImageSize)
     {
-        f_hashImageSize = hashImageSize;  // размер хэша изображения
+        f_hashImageSize = hashImageSize;  // СЂР°Р·РјРµСЂ С…СЌС€Р° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
         f_minHamDist = 5;
     }
 
     JKhash(int hashImageSize, int minHammingDistance)
     {
-        f_hashImageSize = hashImageSize;  // размер хэша изображения
+        f_hashImageSize = hashImageSize;  // СЂР°Р·РјРµСЂ С…СЌС€Р° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
         f_minHamDist = minHammingDistance;
     }
 
@@ -50,7 +50,7 @@ public class JKhash extends JKminrazmer {
     }
 
 
-    // тестирование картинки по хэш-коду
+    // С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµ РєР°СЂС‚РёРЅРєРё РїРѕ С…СЌС€-РєРѕРґСѓ
     @Override
     public boolean Test(File ifile) {
         int hd;
@@ -60,10 +60,10 @@ public class JKhash extends JKminrazmer {
         for(Map.Entry<String,String> ent: f_samples.entrySet()) {
             key = ent.getKey();
             val = ent.getValue();
-            // явное равнение или дистанция Хэмминга (по-символьно)
+            // СЏРІРЅРѕРµ СЂР°РІРЅРµРЅРёРµ РёР»Рё РґРёСЃС‚Р°РЅС†РёСЏ РҐСЌРјРјРёРЅРіР° (РїРѕ-СЃРёРјРІРѕР»СЊРЅРѕ)
             hd=HammingDistance(hi,val);
-            if(hd<f_minHamDist) {  // литература советует 5 на 8x8
-                // сравнение совпало
+            if(hd<f_minHamDist) {  // Р»РёС‚РµСЂР°С‚СѓСЂР° СЃРѕРІРµС‚СѓРµС‚ 5 РЅР° 8x8
+                // СЃСЂР°РІРЅРµРЅРёРµ СЃРѕРІРїР°Р»Рѕ
                 LogFile(key + " ~ " + ifile.getName() + " / " + hi );
                 return true;
             }
@@ -89,7 +89,7 @@ public class JKhash extends JKminrazmer {
         }
         hD = (n-i); //*4;
         if (hD<0) hD = -hD;
-        n=hash1.length();    // сравниваем по минимальной строке, а в hash1 меньшая строка
+        n=hash1.length();    // СЃСЂР°РІРЅРёРІР°РµРј РїРѕ РјРёРЅРёРјР°Р»СЊРЅРѕР№ СЃС‚СЂРѕРєРµ, Р° РІ hash1 РјРµРЅСЊС€Р°СЏ СЃС‚СЂРѕРєР°
         //
         for(i=0; i<n; i++) {
             c1=hash1.charAt(i);

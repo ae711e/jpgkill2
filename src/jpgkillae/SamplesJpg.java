@@ -13,14 +13,14 @@ import java.util.List;
 /**
  * Created by ae on 08.09.2016.
  */
-// создание коллекции образцов
+// СЃРѕР·РґР°РЅРёРµ РєРѕР»Р»РµРєС†РёРё РѕР±СЂР°Р·С†РѕРІ
 public class SamplesJpg extends Samples {
     public static final String s_fileSeparator = System.getProperty("file.separator");
-    protected int f_hashImageSize;  // размер изображения хэша
+    protected int f_hashImageSize;  // СЂР°Р·РјРµСЂ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ С…СЌС€Р°
 
     SamplesJpg()
     {
-        f_hashImageSize=0;  // (будет 8)
+        f_hashImageSize=0;  // (Р±СѓРґРµС‚ 8)
     }
 
     SamplesJpg(int hashImageSize)
@@ -28,7 +28,7 @@ public class SamplesJpg extends Samples {
         f_hashImageSize=hashImageSize;
     }
 
-    // сделать набор примеров на основе каталога dirOfSamples
+    // СЃРґРµР»Р°С‚СЊ РЅР°Р±РѕСЂ РїСЂРёРјРµСЂРѕРІ РЅР° РѕСЃРЅРѕРІРµ РєР°С‚Р°Р»РѕРіР° dirOfSamples
     public int makeSamples(String dirOfSamples)
     {
         int i,n;
@@ -40,16 +40,16 @@ public class SamplesJpg extends Samples {
         }
         //
         f_samples=new HashMap<String,String>();
-        // маска regexp для фильтра файлов
+        // РјР°СЃРєР° regexp РґР»СЏ С„РёР»СЊС‚СЂР° С„Р°Р№Р»РѕРІ
         String JpgMask=".+jpg$";
-        // начнем проходить по каталогу картинок jpg
-        // получим путь директории,где файлы лежат
-        String DirFi=mydir.getAbsolutePath() + s_fileSeparator;  // добавим разделитель
-        // получим список файлов в каталоге согласно фильтра
+        // РЅР°С‡РЅРµРј РїСЂРѕС…РѕРґРёС‚СЊ РїРѕ РєР°С‚Р°Р»РѕРіСѓ РєР°СЂС‚РёРЅРѕРє jpg
+        // РїРѕР»СѓС‡РёРј РїСѓС‚СЊ РґРёСЂРµРєС‚РѕСЂРёРё,РіРґРµ С„Р°Р№Р»С‹ Р»РµР¶Р°С‚
+        String DirFi=mydir.getAbsolutePath() + s_fileSeparator;  // РґРѕР±Р°РІРёРј СЂР°Р·РґРµР»РёС‚РµР»СЊ
+        // РїРѕР»СѓС‡РёРј СЃРїРёСЃРѕРє С„Р°Р№Р»РѕРІ РІ РєР°С‚Р°Р»РѕРіРµ СЃРѕРіР»Р°СЃРЅРѕ С„РёР»СЊС‚СЂР°
         String list[]=mydir.list(new MyFilter(JpgMask));
-        n=list.length; // длина списка
+        n=list.length; // РґР»РёРЅР° СЃРїРёСЃРєР°
         for(i=0; i<n; i++) {
-            String fname=DirFi+list[i];  // имя файла jpg в каталоге
+            String fname=DirFi+list[i];  // РёРјСЏ С„Р°Р№Р»Р° jpg РІ РєР°С‚Р°Р»РѕРіРµ
             File ifile=new File(fname);
             HashImage hi=new HashImage(ifile,f_hashImageSize);
             String hash=hi.getHash();

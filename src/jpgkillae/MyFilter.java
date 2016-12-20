@@ -12,12 +12,12 @@ import java.util.regex.Pattern;
 /**
  * Created by ae on 07.09.2016.
  */
-// класс для фильтрации списка файлов, выдаваемых File.list
+// РєР»Р°СЃСЃ РґР»СЏ С„РёР»СЊС‚СЂР°С†РёРё СЃРїРёСЃРєР° С„Р°Р№Р»РѕРІ, РІС‹РґР°РІР°РµРјС‹С… File.list
 public class MyFilter implements FilenameFilter {
     //String strMask;
     Pattern pat;
 
-    // maskName - regexp маска имени файлов для фильтра
+    // maskName - regexp РјР°СЃРєР° РёРјРµРЅРё С„Р°Р№Р»РѕРІ РґР»СЏ С„РёР»СЊС‚СЂР°
     public MyFilter(String maskName) {
         //strMask=maskName;
         pat=Pattern.compile(maskName);

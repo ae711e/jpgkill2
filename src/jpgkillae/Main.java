@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
         if(args.length < 1) {
-            // âûâåäåì ïîäñêàçêó èç ðåñóðñíîãî ôàéëà
+            // Ð²Ñ‹Ð²ÐµÐ´ÐµÐ¼ Ð¿Ð¾Ð´ÑÐºÐ°Ð·ÐºÑƒ Ð¸Ð· Ñ€ÐµÑÑƒÑ€ÑÐ½Ð¾Ð³Ð¾ Ñ„Ð°Ð¹Ð»Ð°
             String str;
             Resource res=new Resource();
             str = res.getResourceString("/res/readme.txt");
@@ -28,14 +28,14 @@ public class Main {
             System.out.println("?-ERROR-Directory not exists: " + strDirJpg);
             return;
         }
-        // îáðàáîòêà êàòàëîãà
+        // Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ° ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð°
         int a;
-        // ïðîâåðêà ðàçìåðîâ êàðòèíêè (ìåíüøå - íà âûáðîñ)
+        // Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ° Ñ€Ð°Ð·Ð¼ÐµÑ€Ð¾Ð² ÐºÐ°Ñ€Ñ‚Ð¸Ð½ÐºÐ¸ (Ð¼ÐµÐ½ÑŒÑˆÐµ - Ð½Ð° Ð²Ñ‹Ð±Ñ€Ð¾Ñ)
         JKminrazmer jr = new JKminrazmer(130);
         System.out.println("Begin work [" + strDirJpg + "]");
-        a = jr.Run(strDirJpg);  //  âîçâðàùàåò êîë-âî "óáèòûõ" êàðòèíîê
+        a = jr.Run(strDirJpg);  //  Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ ÐºÐ¾Ð»-Ð²Ð¾ "ÑƒÐ±Ð¸Ñ‚Ñ‹Ñ…" ÐºÐ°Ñ€Ñ‚Ð¸Ð½Ð¾Ðº
         System.out.println("RESULT: " + a);
-        // ãðóáîå ñðàâíåíèå êàðòèíîê
+        // Ð³Ñ€ÑƒÐ±Ð¾Ðµ ÑÑ€Ð°Ð²Ð½ÐµÐ½Ð¸Ðµ ÐºÐ°Ñ€Ñ‚Ð¸Ð½Ð¾Ðº
         if(strDirSample != null) {
             File fs=new File(strDirSample);
             if(!fs.isDirectory() || !fs.exists()) {
@@ -46,14 +46,14 @@ public class Main {
             SamplesJpg sampl = new SamplesJpgSmart();
             System.out.println("image compare");
             sampl.makeSamples(strDirSample);
-            //smljpg.write2file(strDirSample + "\\hash.txt"); // çàïèøåì õýø â ôéàë (íà âñÿêèé ñëó÷àé! :-)
+            //smljpg.write2file(strDirSample + "\\hash.txt"); // Ð·Ð°Ð¿Ð¸ÑˆÐµÐ¼ Ñ…ÑÑˆ Ð² Ñ„Ð¹Ð°Ð» (Ð½Ð° Ð²ÑÑÐºÐ¸Ð¹ ÑÐ»ÑƒÑ‡Ð°Ð¹! :-)
             //SamplesTxt smltxt = new SamplesTxt();
             //smltxt.readSamples(hashTxtFileName);
             jk.setSamples(sampl.getSamples());
-            a = jk.Run(strDirJpg);  //  âîçâðàùàåò êîë-âî "óáèòûõ" êàðòèíîê
+            a = jk.Run(strDirJpg);  //  Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ ÐºÐ¾Ð»-Ð²Ð¾ "ÑƒÐ±Ð¸Ñ‚Ñ‹Ñ…" ÐºÐ°Ñ€Ñ‚Ð¸Ð½Ð¾Ðº
             System.out.println("RESULT: " + a);
         }
-        // òî÷íîå ñðàâíåíèå êàðòèíîê
+        // Ñ‚Ð¾Ñ‡Ð½Ð¾Ðµ ÑÑ€Ð°Ð²Ð½ÐµÐ½Ð¸Ðµ ÐºÐ°Ñ€Ñ‚Ð¸Ð½Ð¾Ðº
         if(strDirSampleHD != null) {
             File fs=new File(strDirSampleHD);
             if(!fs.isDirectory() || !fs.exists()) {
@@ -64,9 +64,9 @@ public class Main {
             SamplesJpg sampl = new SamplesJpgSmart(32);
             System.out.println("image HD compare");
             sampl.makeSamples(strDirSampleHD);
-            //smljpg.write2file(strDirSampleHD + "\\hashhd.txt"); // çàïèøåì õýø â ôéàë (íà âñÿêèé ñëó÷àé! :-)
+            //smljpg.write2file(strDirSampleHD + "\\hashhd.txt"); // Ð·Ð°Ð¿Ð¸ÑˆÐµÐ¼ Ñ…ÑÑˆ Ð² Ñ„Ð¹Ð°Ð» (Ð½Ð° Ð²ÑÑÐºÐ¸Ð¹ ÑÐ»ÑƒÑ‡Ð°Ð¹! :-)
             jk.setSamples(sampl.getSamples());
-            a = jk.Run(strDirJpg);  //  âîçâðàùàåò êîë-âî "óáèòûõ" êàðòèíîê
+            a = jk.Run(strDirJpg);  //  Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ ÐºÐ¾Ð»-Ð²Ð¾ "ÑƒÐ±Ð¸Ñ‚Ñ‹Ñ…" ÐºÐ°Ñ€Ñ‚Ð¸Ð½Ð¾Ðº
             System.out.println("RESULT: " + a);
         }
         //

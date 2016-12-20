@@ -12,7 +12,7 @@ import java.util.Map;
  * Created by ae on 09.09.2016.
  */
 
-// хэш картинок из текстового файла, каждый хэш в отдельной строке
+// С…СЌС€ РєР°СЂС‚РёРЅРѕРє РёР· С‚РµРєСЃС‚РѕРІРѕРіРѕ С„Р°Р№Р»Р°, РєР°Р¶РґС‹Р№ С…СЌС€ РІ РѕС‚РґРµР»СЊРЅРѕР№ СЃС‚СЂРѕРєРµ
 public class SamplesTxt extends Samples {
     @Override
     public int makeSamples(String dirOfSamples)
@@ -26,23 +26,23 @@ public class SamplesTxt extends Samples {
         }
         //
         f_samples = new HashMap<String,String>();
-        // маска regexp для фильтра файлов
+        // РјР°СЃРєР° regexp РґР»СЏ С„РёР»СЊС‚СЂР° С„Р°Р№Р»РѕРІ
         String JpgMask = ".+txt$";
-        // начнем проходить по каталогу картинок jpg
-        // получим путь директории,где файлы лежат
-        String DirFi = mydir.getAbsolutePath() + System.getProperty("file.separator");  // добавим разделитель
-        // получим список файлов в каталоге согласно фильтра
+        // РЅР°С‡РЅРµРј РїСЂРѕС…РѕРґРёС‚СЊ РїРѕ РєР°С‚Р°Р»РѕРіСѓ РєР°СЂС‚РёРЅРѕРє jpg
+        // РїРѕР»СѓС‡РёРј РїСѓС‚СЊ РґРёСЂРµРєС‚РѕСЂРёРё,РіРґРµ С„Р°Р№Р»С‹ Р»РµР¶Р°С‚
+        String DirFi = mydir.getAbsolutePath() + System.getProperty("file.separator");  // РґРѕР±Р°РІРёРј СЂР°Р·РґРµР»РёС‚РµР»СЊ
+        // РїРѕР»СѓС‡РёРј СЃРїРёСЃРѕРє С„Р°Р№Р»РѕРІ РІ РєР°С‚Р°Р»РѕРіРµ СЃРѕРіР»Р°СЃРЅРѕ С„РёР»СЊС‚СЂР°
         String list[] = mydir.list(new MyFilter(JpgMask));
-        n = list.length; // длина списка
+        n = list.length; // РґР»РёРЅР° СЃРїРёСЃРєР°
         f_samples = new HashMap<String,String>();
         for (i = 0; i < n; i++) {
-            String fname = DirFi + list[i];  // имя файла jpg в каталоге
+            String fname = DirFi + list[i];  // РёРјСЏ С„Р°Р№Р»Р° jpg РІ РєР°С‚Р°Р»РѕРіРµ
             cnt += readSamples(fname, f_samples);
         }
         return cnt;
     }
 
-    // прочитать из файла в список
+    // РїСЂРѕС‡РёС‚Р°С‚СЊ РёР· С„Р°Р№Р»Р° РІ СЃРїРёСЃРѕРє
     public static int readSamples(String fileInput, Map<String,String> map)
     {
         int cnt=0;
@@ -53,11 +53,11 @@ public class SamplesTxt extends Samples {
             int i;
 
             while ((str=in.readLine()) != null) {
-                // прочитали строку
+                // РїСЂРѕС‡РёС‚Р°Р»Рё СЃС‚СЂРѕРєСѓ
                 i=str.indexOf('#');
                 if(i>1) {
-                    key=str.substring(0,i-1);  // ключ - имя файла образца
-                    val=str.substring(i+1);    // значение - хэш
+                    key=str.substring(0,i-1);  // РєР»СЋС‡ - РёРјСЏ С„Р°Р№Р»Р° РѕР±СЂР°Р·С†Р°
+                    val=str.substring(i+1);    // Р·РЅР°С‡РµРЅРёРµ - С…СЌС€
                     map.put(key,val);
                     cnt++;
                 }

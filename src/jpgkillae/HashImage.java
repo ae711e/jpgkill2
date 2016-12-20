@@ -20,27 +20,27 @@ import java.io.IOException;
  * Created by ae on 07.09.2016.
  */
 public class HashImage {
-    private int    f_hashImageSize;  // размер изображения для вычисления хэш-функции
-    private File   fileImage;       // файл изображения
-    private String hashImage;     // хэш изображения
+    private int    f_hashImageSize;  // СЂР°Р·РјРµСЂ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ С…СЌС€-С„СѓРЅРєС†РёРё
+    private File   fileImage;       // С„Р°Р№Р» РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
+    private String hashImage;     // С…СЌС€ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
 
     HashImage(File imageFile)
     {
         fileImage=imageFile;
         hashImage="";
-        f_hashImageSize=8;  // размер изображения 8x8
+        f_hashImageSize=8;  // СЂР°Р·РјРµСЂ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ 8x8
     }
 
-    // задать нестандарный размер изображения для вычисления хэша
+    // Р·Р°РґР°С‚СЊ РЅРµСЃС‚Р°РЅРґР°СЂРЅС‹Р№ СЂР°Р·РјРµСЂ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ С…СЌС€Р°
     HashImage(File imageFile, int hashImageSize)
     {
         fileImage=imageFile;
         hashImage="";
-        if(hashImageSize<8) hashImageSize=8;    // меньше 8 нельзя
-        f_hashImageSize=hashImageSize;  // размер изображения hSxhS
+        if(hashImageSize<8) hashImageSize=8;    // РјРµРЅСЊС€Рµ 8 РЅРµР»СЊР·СЏ
+        f_hashImageSize=hashImageSize;  // СЂР°Р·РјРµСЂ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ hSxhS
     }
 
-    // вернуть хэш изображения, если еще не считали - рассчитать
+    // РІРµСЂРЅСѓС‚СЊ С…СЌС€ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ, РµСЃР»Рё РµС‰Рµ РЅРµ СЃС‡РёС‚Р°Р»Рё - СЂР°СЃСЃС‡РёС‚Р°С‚СЊ
     public String getHash()
     {
         if(hashImage.length()>1) {
@@ -49,10 +49,10 @@ public class HashImage {
         return calcHash();
     }
 
-    // расчет хэша изображения
+    // СЂР°СЃС‡РµС‚ С…СЌС€Р° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
     public String calcHash()
     {
-        // начнем развивать тему hash
+        // РЅР°С‡РЅРµРј СЂР°Р·РІРёРІР°С‚СЊ С‚РµРјСѓ hash
         BufferedImage img;
         try {
             img = ImageIO.read(fileImage);
@@ -65,32 +65,32 @@ public class HashImage {
         return hashImage;
     }
 
-    // рассчитать хэш:  (https://habrahabr.ru/post/120562/)
-    // 1. уменьшить размер
-    // 2. сделать серую картинку
-    // 3. найти среднее
-    // 4. цепочка бит. заменим пикселы на 0 (если меньше среднего) или 1 (если больше, равно) заменим бит
-    // 5. вытянуть все бит в строку HEX - теперь не вытягиваю ибо нафиг, мой файл-мои правила!
-    // от опытов осталось: final static char[] charHex={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+    // СЂР°СЃСЃС‡РёС‚Р°С‚СЊ С…СЌС€:  (https://habrahabr.ru/post/120562/)
+    // 1. СѓРјРµРЅСЊС€РёС‚СЊ СЂР°Р·РјРµСЂ
+    // 2. СЃРґРµР»Р°С‚СЊ СЃРµСЂСѓСЋ РєР°СЂС‚РёРЅРєСѓ
+    // 3. РЅР°Р№С‚Рё СЃСЂРµРґРЅРµРµ
+    // 4. С†РµРїРѕС‡РєР° Р±РёС‚. Р·Р°РјРµРЅРёРј РїРёРєСЃРµР»С‹ РЅР° 0 (РµСЃР»Рё РјРµРЅСЊС€Рµ СЃСЂРµРґРЅРµРіРѕ) РёР»Рё 1 (РµСЃР»Рё Р±РѕР»СЊС€Рµ, СЂР°РІРЅРѕ) Р·Р°РјРµРЅРёРј Р±РёС‚
+    // 5. РІС‹С‚СЏРЅСѓС‚СЊ РІСЃРµ Р±РёС‚ РІ СЃС‚СЂРѕРєСѓ HEX - С‚РµРїРµСЂСЊ РЅРµ РІС‹С‚СЏРіРёРІР°СЋ РёР±Рѕ РЅР°С„РёРі, РјРѕР№ С„Р°Р№Р»-РјРѕРё РїСЂР°РІРёР»Р°!
+    // РѕС‚ РѕРїС‹С‚РѕРІ РѕСЃС‚Р°Р»РѕСЃСЊ: final static char[] charHex={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
 
     private String calcHashImage(BufferedImage image)
     {
-        // 1. уменьшаем размер и убираем нижнюючасть картинки (там служебные надписи c 21/12/2016)
+        // 1. СѓРјРµРЅСЊС€Р°РµРј СЂР°Р·РјРµСЂ Рё СѓР±РёСЂР°РµРј РЅРёР¶РЅСЋСЋС‡Р°СЃС‚СЊ РєР°СЂС‚РёРЅРєРё (С‚Р°Рј СЃР»СѓР¶РµР±РЅС‹Рµ РЅР°РґРїРёСЃРё c 21/12/2016)
         BufferedImage im=toNewSize(image, f_hashImageSize, f_hashImageSize);
            ////writeImage2File(im,"c:\\tmp\\a1.png");
-        // 2. убрать цвет - сделать серой и заодно рассчитаем среднее
-        int isr;  // среднее картинки
+        // 2. СѓР±СЂР°С‚СЊ С†РІРµС‚ - СЃРґРµР»Р°С‚СЊ СЃРµСЂРѕР№ Рё Р·Р°РѕРґРЅРѕ СЂР°СЃСЃС‡РёС‚Р°РµРј СЃСЂРµРґРЅРµРµ
+        int isr;  // СЃСЂРµРґРЅРµРµ РєР°СЂС‚РёРЅРєРё
         isr=toGrayImageAndAverage(im);
            ////writeImage2File(im,"c:\\tmp\\ai4.png");
-        // размеры изображения
+        // СЂР°Р·РјРµСЂС‹ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
         int sx=im.getWidth();
         int sy=im.getHeight();
-        // 3. строим цепочку бит от уровня среднего
+        // 3. СЃС‚СЂРѕРёРј С†РµРїРѕС‡РєСѓ Р±РёС‚ РѕС‚ СѓСЂРѕРІРЅСЏ СЃСЂРµРґРЅРµРіРѕ
         StringBuffer shash=new StringBuffer(sx*sy);
         WritableRaster raster = im.getRaster();
         int[] data=new int[4];
         int x,y;
-        ////int base = 1;  // база двоичного числа в последовательности бит-пиксела
+        ////int base = 1;  // Р±Р°Р·Р° РґРІРѕРёС‡РЅРѕРіРѕ С‡РёСЃР»Р° РІ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё Р±РёС‚-РїРёРєСЃРµР»Р°
         ////int symb = 0;  //
         char c;
         for (x = 0; x < sx; x++) {
@@ -115,7 +115,7 @@ public class HashImage {
     }
 
 
-    // записать изображение в файл
+    // Р·Р°РїРёСЃР°С‚СЊ РёР·РѕР±СЂР°Р¶РµРЅРёРµ РІ С„Р°Р№Р»
     protected static boolean writeImage2File(BufferedImage img, String fout)
     {
         File out=new File(fout);
@@ -129,24 +129,24 @@ public class HashImage {
         return true;
     }
 
-    // сделать изображение серым и вернуть среднее значение
+    // СЃРґРµР»Р°С‚СЊ РёР·РѕР±СЂР°Р¶РµРЅРёРµ СЃРµСЂС‹Рј Рё РІРµСЂРЅСѓС‚СЊ СЃСЂРµРґРЅРµРµ Р·РЅР°С‡РµРЅРёРµ
     private static int toGrayImageAndAverage(BufferedImage image)
     {
-        // делаем картинку серой
+        // РґРµР»Р°РµРј РєР°СЂС‚РёРЅРєСѓ СЃРµСЂРѕР№
         WritableRaster raster = image.getRaster();
         int[] data = new int[4];
         int sx=image.getWidth();
         int sy=image.getHeight();
         int rgb;
-        // и рассчитаем среднее значение
-        // найдем среднее
-        double sr=0; // сумма
-        int sn=0; // кол-во
+        // Рё СЂР°СЃСЃС‡РёС‚Р°РµРј СЃСЂРµРґРЅРµРµ Р·РЅР°С‡РµРЅРёРµ
+        // РЅР°Р№РґРµРј СЃСЂРµРґРЅРµРµ
+        double sr=0; // СЃСѓРјРјР°
+        int sn=0; // РєРѕР»-РІРѕ
         //
         for (int x = 0; x < sx; x++) {
             for (int y = 0; y < sy; y++) {
                 data = raster.getPixel(x, y, data); // new int[4]
-                // серый пиксел (data[0]-red  data[1]-green data[2]-blue data[3]-alpha)
+                // СЃРµСЂС‹Р№ РїРёРєСЃРµР» (data[0]-red  data[1]-green data[2]-blue data[3]-alpha)
                 rgb = (int) (((double) data[0] * 0.299) + ((double) data[1] * 0.587) + ((double) data[2] * 0.114));
                 if (rgb > 255) {
                     rgb = 255;
@@ -162,14 +162,14 @@ public class HashImage {
         return (int)sr;
     }
     
-    // изменить размер изображение до newX newY
-    // уменьшить размер, отрезать нижнюю часть
-    // использует разные функции
+    // РёР·РјРµРЅРёС‚СЊ СЂР°Р·РјРµСЂ РёР·РѕР±СЂР°Р¶РµРЅРёРµ РґРѕ newX newY
+    // СѓРјРµРЅСЊС€РёС‚СЊ СЂР°Р·РјРµСЂ, РѕС‚СЂРµР·Р°С‚СЊ РЅРёР¶РЅСЋСЋ С‡Р°СЃС‚СЊ
+    // РёСЃРїРѕР»СЊР·СѓРµС‚ СЂР°Р·РЅС‹Рµ С„СѓРЅРєС†РёРё
     private static BufferedImage toNewSize(BufferedImage originalImage, int newX, int newY)
     {
       BufferedImage img, imgcrop, imgret;
-      img = toNewSize3(originalImage, 960, 600); // привести к стандартному размеру 960x600 для отрезания подписи
-      imgcrop = img.getSubimage(0,0,  960, 550);  // отрезать подпись (она внизу картинки)
+      img = toNewSize3(originalImage, 960, 600); // РїСЂРёРІРµСЃС‚Рё Рє СЃС‚Р°РЅРґР°СЂС‚РЅРѕРјСѓ СЂР°Р·РјРµСЂСѓ 960x600 РґР»СЏ РѕС‚СЂРµР·Р°РЅРёСЏ РїРѕРґРїРёСЃРё
+      imgcrop = img.getSubimage(0,0,  960, 550);  // РѕС‚СЂРµР·Р°С‚СЊ РїРѕРґРїРёСЃСЊ (РѕРЅР° РІРЅРёР·Сѓ РєР°СЂС‚РёРЅРєРё)
       imgret= toNewSize3(imgcrop, newX, newY);
         ////writeImage2File(originalImage,"c:\\tmp\\ai0.png");
         ////writeImage2File(img,"c:\\tmp\\ai1.png");
@@ -178,7 +178,7 @@ public class HashImage {
       return imgret;
     }
   
-    // изменить размер изображение до newX newY
+    // РёР·РјРµРЅРёС‚СЊ СЂР°Р·РјРµСЂ РёР·РѕР±СЂР°Р¶РµРЅРёРµ РґРѕ newX newY
     private static BufferedImage toNewSize1(BufferedImage originalImage, int newX, int newY)
     {
         BufferedImage scaled = new BufferedImage(newX, newY, BufferedImage.TYPE_INT_RGB);
@@ -188,7 +188,7 @@ public class HashImage {
         return scaled;
     }
   
-    // изменить размер изображение до newX newY
+    // РёР·РјРµРЅРёС‚СЊ СЂР°Р·РјРµСЂ РёР·РѕР±СЂР°Р¶РµРЅРёРµ РґРѕ newX newY
     private static BufferedImage toNewSize2(BufferedImage image, int newX, int newY)
     {
 
@@ -211,15 +211,15 @@ public class HashImage {
         return target;
     }
 
-    // функция из Интернета
+    // С„СѓРЅРєС†РёСЏ РёР· РРЅС‚РµСЂРЅРµС‚Р°
     private static BufferedImage toNewSize3(BufferedImage img, int targetWidth, int targetHeight)
     {
         int type = (img.getTransparency() == Transparency.OPAQUE) ? BufferedImage.TYPE_INT_RGB : BufferedImage.TYPE_INT_ARGB;
         BufferedImage ret = (BufferedImage)img;
         int w, h;
-        // Используем многошаговую технику: начинаем с оригинального размера, затем
-        // уменьшаем несколько раз многократным вызовом drawImage()
-        // до тех пор, пока достигнем нужного размера
+        // РСЃРїРѕР»СЊР·СѓРµРј РјРЅРѕРіРѕС€Р°РіРѕРІСѓСЋ С‚РµС…РЅРёРєСѓ: РЅР°С‡РёРЅР°РµРј СЃ РѕСЂРёРіРёРЅР°Р»СЊРЅРѕРіРѕ СЂР°Р·РјРµСЂР°, Р·Р°С‚РµРј
+        // СѓРјРµРЅСЊС€Р°РµРј РЅРµСЃРєРѕР»СЊРєРѕ СЂР°Р· РјРЅРѕРіРѕРєСЂР°С‚РЅС‹Рј РІС‹Р·РѕРІРѕРј drawImage()
+        // РґРѕ С‚РµС… РїРѕСЂ, РїРѕРєР° РґРѕСЃС‚РёРіРЅРµРј РЅСѓР¶РЅРѕРіРѕ СЂР°Р·РјРµСЂР°
         w = img.getWidth();
         h = img.getHeight();
         do {
@@ -237,7 +237,7 @@ public class HashImage {
         return ret;
     }
     
-    // вырезает в оригинальном изображении прямоугольник от x0, y0 шириной sizeX и высотой sizeY
+    // РІС‹СЂРµР·Р°РµС‚ РІ РѕСЂРёРіРёРЅР°Р»СЊРЅРѕРј РёР·РѕР±СЂР°Р¶РµРЅРёРё РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє РѕС‚ x0, y0 С€РёСЂРёРЅРѕР№ sizeX Рё РІС‹СЃРѕС‚РѕР№ sizeY
     // http://blog.dimmduh.com/2011/05/crop-image-java.html
     private static BufferedImage cropImage(BufferedImage originalImage, int x0, int y0, int sizeX, int sizeY)
     {

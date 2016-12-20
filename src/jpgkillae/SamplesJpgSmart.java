@@ -34,15 +34,15 @@ public class SamplesJpgSmart extends SamplesJpg {
             return 0;
         }
 
-        long timeMyDir = mydir.lastModified(); // äàòà ìîäèôèêàöèè êàòàëîãà
+        long timeMyDir = mydir.lastModified(); // Ð´Ð°Ñ‚Ð° Ð¼Ð¾Ð´Ð¸Ñ„Ð¸ÐºÐ°Ñ†Ð¸Ð¸ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð°
         String fullHashFileName = dirOfSamples + s_fileSeparator +hashFileName;
         File myhash = new File (fullHashFileName);
         long timeHashFile=0;
-        // åñëè ôàéë ñ õýøàìè ñóùåñòâóåò, òî èñïîëüçóåì åãî äàòó
+        // ÐµÑÐ»Ð¸ Ñ„Ð°Ð¹Ð» Ñ Ñ…ÑÑˆÐ°Ð¼Ð¸ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚, Ñ‚Ð¾ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÐ¼ ÐµÐ³Ð¾ Ð´Ð°Ñ‚Ñƒ
         if(myhash.exists()) {
-            timeHashFile = myhash.lastModified();  // âðåìÿ ìîäèôèêàöèè ôàéëà õýøà
+            timeHashFile = myhash.lastModified();  // Ð²Ñ€ÐµÐ¼Ñ Ð¼Ð¾Ð´Ð¸Ñ„Ð¸ÐºÐ°Ñ†Ð¸Ð¸ Ñ„Ð°Ð¹Ð»Ð° Ñ…ÑÑˆÐ°
         }
-        // åñëè âðåìÿ èçìåíåíèÿ êàòàëîãà áîëüøå òåêñòîâîãî ôàéëà, òî ïåðåñòðîèì ôàéë
+        // ÐµÑÐ»Ð¸ Ð²Ñ€ÐµÐ¼Ñ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð° Ð±Ð¾Ð»ÑŒÑˆÐµ Ñ‚ÐµÐºÑÑ‚Ð¾Ð²Ð¾Ð³Ð¾ Ñ„Ð°Ð¹Ð»Ð°, Ñ‚Ð¾ Ð¿ÐµÑ€ÐµÑÑ‚Ñ€Ð¾Ð¸Ð¼ Ñ„Ð°Ð¹Ð»
         if(timeMyDir > timeHashFile) {
             cnt = super.makeSamples(dirOfSamples);
             super.write2file(fullHashFileName);

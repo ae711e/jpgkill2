@@ -16,7 +16,7 @@ import java.io.IOException;
 
 
 public class JKminrazmer extends JpgKill {
-    private int f_minSize; // минимальные размеры, после которых выбраковывается
+    private int f_minSize; // РјРёРЅРёРјР°Р»СЊРЅС‹Рµ СЂР°Р·РјРµСЂС‹, РїРѕСЃР»Рµ РєРѕС‚РѕСЂС‹С… РІС‹Р±СЂР°РєРѕРІС‹РІР°РµС‚СЃСЏ
 
     JKminrazmer()
     {
@@ -28,7 +28,7 @@ public class JKminrazmer extends JpgKill {
         f_minSize = minSize;
     }
 
-    // тестирование картинки по размеру
+    // С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµ РєР°СЂС‚РёРЅРєРё РїРѕ СЂР°Р·РјРµСЂСѓ
     @Override
     public boolean Test(File ifile)
     {
@@ -39,7 +39,7 @@ public class JKminrazmer extends JpgKill {
             e.printStackTrace();
             return false;
         }
-        // определим размеры изображения
+        // РѕРїСЂРµРґРµР»РёРј СЂР°Р·РјРµСЂС‹ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
         int x=img.getWidth();
         int y=img.getHeight();
         boolean flag;

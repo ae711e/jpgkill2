@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Created by ae on 09.09.2016.
  */
-// класс примеров для сравнения
+// РєР»Р°СЃСЃ РїСЂРёРјРµСЂРѕРІ РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ
 public class Samples {
     protected Map<String,String> f_samples;
 
@@ -20,14 +20,14 @@ public class Samples {
             return f_samples;
         }
 
-    // сделать набор примеров на основе каталога dirOfSamples
+    // СЃРґРµР»Р°С‚СЊ РЅР°Р±РѕСЂ РїСЂРёРјРµСЂРѕРІ РЅР° РѕСЃРЅРѕРІРµ РєР°С‚Р°Р»РѕРіР° dirOfSamples
     public int makeSamples(String dirOfSamples)
         {
             return 0;
         }
 
-    // Записать список в текстовый файл
-    // на основе http://www.cyberforum.ru/java-j2se/thread862328.html
+    // Р—Р°РїРёСЃР°С‚СЊ СЃРїРёСЃРѕРє РІ С‚РµРєСЃС‚РѕРІС‹Р№ С„Р°Р№Р»
+    // РЅР° РѕСЃРЅРѕРІРµ http://www.cyberforum.ru/java-j2se/thread862328.html
     public int write2file(String fileOut)
     {
         int cnt=0;
@@ -45,7 +45,7 @@ public class Samples {
                 cnt++;
             }
             */
-                // по мотивам:
+                // РїРѕ РјРѕС‚РёРІР°Рј:
                 // http://info.javarush.ru/translation/2014/02/11/9-%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D1%8B%D1%85-%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2-%D0%BE-Map-%D0%B2-Java.html
                 // https://user12vv.wordpress.com/2013/10/30/java-%D1%81%D0%BF%D0%BE%D1%81%D0%BE%D0%B1%D1%8B-%D0%BF%D0%B5%D1%80%D0%B5%D0%B1%D0%BE%D1%80%D0%B0-%D0%BA%D0%BE%D0%BB%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8-map/
                 // http://www.seostella.com/ru/article/2012/08/09/kollekcii-collections-v-java-map.html
@@ -67,7 +67,7 @@ public class Samples {
         return cnt;
     }
 
-    // прочитать список из текстового файла
+    // РїСЂРѕС‡РёС‚Р°С‚СЊ СЃРїРёСЃРѕРє РёР· С‚РµРєСЃС‚РѕРІРѕРіРѕ С„Р°Р№Р»Р°
     public int read4file(String fileInput)
     {
         int cnt=0;
@@ -77,11 +77,11 @@ public class Samples {
                 String str, key, val;
                 int i;
                 while ((str = in.readLine()) != null) {
-                    // прочитали строку
+                    // РїСЂРѕС‡РёС‚Р°Р»Рё СЃС‚СЂРѕРєСѓ
                     i = str.indexOf('#');
                     if (i > 1) {
-                        key = str.substring(0, i - 1);  // ключ - имя файла образца
-                        val = str.substring(i + 1);    // значение - хэш
+                        key = str.substring(0, i - 1);  // РєР»СЋС‡ - РёРјСЏ С„Р°Р№Р»Р° РѕР±СЂР°Р·С†Р°
+                        val = str.substring(i + 1);    // Р·РЅР°С‡РµРЅРёРµ - С…СЌС€
                         f_samples.put(key, val);
                         cnt++;
                     }

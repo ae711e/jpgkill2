@@ -11,10 +11,10 @@ import java.io.File;
  * Created by ae on 07.09.2016.
  */
 
-// базовый класс обработки каталога
+// Р±Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ РѕР±СЂР°Р±РѕС‚РєРё РєР°С‚Р°Р»РѕРіР°
 public class JpgKill {
     final static String s_subdir=System.getProperty("file.separator")+
-                                 "x"+System.getProperty("file.separator"); // подкаталог, куда перемещать похожие файлы
+                                 "x"+System.getProperty("file.separator"); // РїРѕРґРєР°С‚Р°Р»РѕРі, РєСѓРґР° РїРµСЂРµРјРµС‰Р°С‚СЊ РїРѕС…РѕР¶РёРµ С„Р°Р№Р»С‹
 
     public static void Log(String str) {
         System.out.println(str);
@@ -29,22 +29,22 @@ public class JpgKill {
             Log("?-ERROR-Directory not exists: " + dir);
             return 0;
         }
-        // маска regexp для фильтра файлов
+        // РјР°СЃРєР° regexp РґР»СЏ С„РёР»СЊС‚СЂР° С„Р°Р№Р»РѕРІ
         String JpgMask=".+jpg$";
-        // начнем проходить по каталогу картинок jpg
-        // получим путь директории,где файлы лежат
-        String DirFi=mydir.getAbsolutePath() + System.getProperty("file.separator");  // добавим разделитель
-        // получим список файлов в каталоге согласно фильтра
+        // РЅР°С‡РЅРµРј РїСЂРѕС…РѕРґРёС‚СЊ РїРѕ РєР°С‚Р°Р»РѕРіСѓ РєР°СЂС‚РёРЅРѕРє jpg
+        // РїРѕР»СѓС‡РёРј РїСѓС‚СЊ РґРёСЂРµРєС‚РѕСЂРёРё,РіРґРµ С„Р°Р№Р»С‹ Р»РµР¶Р°С‚
+        String DirFi=mydir.getAbsolutePath() + System.getProperty("file.separator");  // РґРѕР±Р°РІРёРј СЂР°Р·РґРµР»РёС‚РµР»СЊ
+        // РїРѕР»СѓС‡РёРј СЃРїРёСЃРѕРє С„Р°Р№Р»РѕРІ РІ РєР°С‚Р°Р»РѕРіРµ СЃРѕРіР»Р°СЃРЅРѕ С„РёР»СЊС‚СЂР°
         String list[]=mydir.list(new MyFilter(JpgMask));
-        n=list.length; // длина списка
+        n=list.length; // РґР»РёРЅР° СЃРїРёСЃРєР°
         for(i=0; i<n; i++) {
-            String fname=DirFi+list[i];  // имя файла jpg в каталоге
+            String fname=DirFi+list[i];  // РёРјСЏ С„Р°Р№Р»Р° jpg РІ РєР°С‚Р°Р»РѕРіРµ
             //Log(fname);
-            // проверим - соответствует ли файл условию?
+            // РїСЂРѕРІРµСЂРёРј - СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ Р»Рё С„Р°Р№Р» СѓСЃР»РѕРІРёСЋ?
             File ifile=new File(fname);
             if(Test(ifile)) {
                 cnt++;
-                // "убьем" файл
+                // "СѓР±СЊРµРј" С„Р°Р№Р»
                 Kill(ifile);
             }
         }
@@ -52,15 +52,15 @@ public class JpgKill {
         return cnt;
     }
 
-    // проверяет условия проверки для файла jpg
-    // если файл соответствует условию - возвращает TRUE, иначе - FALSE
+    // РїСЂРѕРІРµСЂСЏРµС‚ СѓСЃР»РѕРІРёСЏ РїСЂРѕРІРµСЂРєРё РґР»СЏ С„Р°Р№Р»Р° jpg
+    // РµСЃР»Рё С„Р°Р№Р» СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ СѓСЃР»РѕРІРёСЋ - РІРѕР·РІСЂР°С‰Р°РµС‚ TRUE, РёРЅР°С‡Рµ - FALSE
     public boolean Test(File ifile)
     {
         return false;
     }
 
-    // убивает файл
-    // если убил - возвращает TRUE
+    // СѓР±РёРІР°РµС‚ С„Р°Р№Р»
+    // РµСЃР»Рё СѓР±РёР» - РІРѕР·РІСЂР°С‰Р°РµС‚ TRUE
     public boolean Kill(File ifile)
     {
         String path=ifile.getParent();
