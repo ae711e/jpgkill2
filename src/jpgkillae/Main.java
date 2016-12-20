@@ -12,6 +12,7 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
         if(args.length < 1) {
+            // выведем подсказку из ресурсного файла
             String str;
             Resource res=new Resource();
             str = res.getResourceString("/res/readme.txt");
