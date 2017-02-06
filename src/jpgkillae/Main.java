@@ -6,6 +6,10 @@
 package jpgkillae;
 
 import java.io.File;
+/*
+ Проверяет на матрице 16х16 только один каталог SAMPLE
+ 20 января 2017
+ */
 
 public class Main {
 
@@ -35,36 +39,17 @@ public class Main {
         System.out.println("Begin work [" + strDirJpg + "]");
         a = jr.Run(strDirJpg);  //  возвращает кол-во "убитых" картинок
         System.out.println("RESULT: " + a);
-        // грубое сравнение картинок
-        if(strDirSample != null) {
+        // сравнение картинок
+        if                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         (strDirSample != null) {
             File fs=new File(strDirSample);
             if(!fs.isDirectory() || !fs.exists()) {
                 System.out.println("?-ERROR-Directory not exists: " + strDirSample);
                 return;
             }
-            JKhash jk = new JKhash();
-            SamplesJpg sampl = new SamplesJpgSmart();
+            JKhash jk = new JKhash(16, 4); // размеры
+            SamplesJpg sampl = new SamplesJpgSmart(16);
             System.out.println("image compare");
             sampl.makeSamples(strDirSample);
-            //smljpg.write2file(strDirSample + "\\hash.txt"); // запишем хэш в фйал (на всякий случай! :-)
-            //SamplesTxt smltxt = new SamplesTxt();
-            //smltxt.readSamples(hashTxtFileName);
-            jk.setSamples(sampl.getSamples());
-            a = jk.Run(strDirJpg);  //  возвращает кол-во "убитых" картинок
-            System.out.println("RESULT: " + a);
-        }
-        // точное сравнение картинок
-        if(strDirSampleHD != null) {
-            File fs=new File(strDirSampleHD);
-            if(!fs.isDirectory() || !fs.exists()) {
-                System.out.println("?-ERROR-Directory not exists: " + strDirSampleHD);
-                return;
-            }
-            JKhash jk = new JKhash(32, 3);
-            SamplesJpg sampl = new SamplesJpgSmart(32);
-            System.out.println("image HD compare");
-            sampl.makeSamples(strDirSampleHD);
-            //smljpg.write2file(strDirSampleHD + "\\hashhd.txt"); // запишем хэш в фйал (на всякий случай! :-)
             jk.setSamples(sampl.getSamples());
             a = jk.Run(strDirJpg);  //  возвращает кол-во "убитых" картинок
             System.out.println("RESULT: " + a);

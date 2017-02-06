@@ -55,11 +55,11 @@ public class JKhash extends JKminrazmer {
     public boolean Test(File ifile) {
         int hd;
         HashImage hu=new HashImage(ifile, f_hashImageSize);
-        String hi=hu.getHash();
-        String key,val;
+        String key,val, hi;
         for(Map.Entry<String,String> ent: f_samples.entrySet()) {
             key = ent.getKey();
             val = ent.getValue();
+            hi = hu.getHash();
             // явное равнение или дистанция Хэмминга (по-символьно)
             hd=HammingDistance(hi,val);
             if(hd<f_minHamDist) {  // литература советует 5 на 8x8

@@ -20,6 +20,7 @@ import java.io.IOException;
  * Created by ae on 07.09.2016.
  */
 public class HashImage {
+
     private int    f_hashImageSize;  // размер изображения для вычисления хэш-функции
     private File   fileImage;       // файл изображения
     private String hashImage;     // хэш изображения
@@ -61,10 +62,27 @@ public class HashImage {
             return hashImage;
         }
         //
-        hashImage=calcHashImage(img);
+        img=cropPicture(img);
+        if(img!=null) {
+          hashImage = calcHashImage(img);
+        }
         return hashImage;
     }
 
+    // Обрезать изображение
+    private BufferedImage cropPicture(BufferedImage image)
+    {
+      int dx, dy;
+      dx=image.getWidth();  // ширина
+      dy=image.getHeight(); // высота
+      // надо отрезать снизу текстовую примочку на высоту bottomCrop пиксел
+      int r=dy-R.bottomCrop;
+      if(r<1) return null;
+      BufferedImage cropImage;
+      cropImage=image.getSubimage(0,0, dx,r);
+      return cropImage;
+    }
+    
     // рассчитать хэш:  (https://habrahabr.ru/post/120562/)
     // 1. уменьшить размер
     // 2. сделать серую картинку
@@ -72,16 +90,16 @@ public class HashImage {
     // 4. цепочка бит. заменим пикселы на 0 (если меньше среднего) или 1 (если больше, равно) заменим бит
     // 5. вытянуть все бит в строку HEX - теперь не вытягиваю ибо нафиг, мой файл-мои правила!
     // от опытов осталось: final static char[] charHex={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
-
     private String calcHashImage(BufferedImage image)
     {
+           writeImage2File(image,"c:\\tmp\\a0.png");
         // 1. уменьшаем размер и убираем нижнюючасть картинки (там служебные надписи c 21/12/2016)
         BufferedImage im=toNewSize(image, f_hashImageSize, f_hashImageSize);
-           ////writeImage2File(im,"c:\\tmp\\a1.png");
+           writeImage2File(im,"c:\\tmp\\a1.png");
         // 2. убрать цвет - сделать серой и заодно рассчитаем среднее
         int isr;  // среднее картинки
         isr=toGrayImageAndAverage(im);
-           ////writeImage2File(im,"c:\\tmp\\ai4.png");
+           writeImage2File(im,"c:\\tmp\\a2.png");
         // размеры изображения
         int sx=im.getWidth();
         int sy=im.getHeight();

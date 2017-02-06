@@ -42,6 +42,7 @@ public class JKminrazmer extends JpgKill {
         // определим размеры изображения
         int x=img.getWidth();
         int y=img.getHeight();
+        y = y - R.bottomCrop; // снизу отрезается
         boolean flag;
         flag= x < f_minSize || y < f_minSize;
         // Log(ifile.getName() + "   " + x + "x" + y + "  ? " +flag);
